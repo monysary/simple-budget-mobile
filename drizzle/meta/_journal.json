@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1759535659941,
+      "tag": "0000_damp_proudstar",
+      "breakpoints": true
+    }
+  ]
+}

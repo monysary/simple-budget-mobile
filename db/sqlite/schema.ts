@@ -1,9 +1,8 @@
-import * as Crypto from 'expo-crypto';
 import { sqliteTable, text, integer, real } from 'drizzle-orm/sqlite-core';
 import { sql } from 'drizzle-orm';
 
 const base_table = {
-  id: text('id', {length: 36}).primaryKey().$default(() => Crypto.randomUUID()),
+  id: integer("id").primaryKey({ autoIncrement: true }),
   created_at: text('created_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
   updated_at: text('updated_at'),
   deleted_at: text('deleted_at')
@@ -13,7 +12,7 @@ export const spending_tracker = sqliteTable('spending_tracker', {
   ...base_table,
   name: text('name').notNull(),
   description: text('description'),
-  monthly_max_spending: real('monthly_max_spending').notNull(),
+  monthly_max_spending: real('monthly_max_spending'),
   user_profile_id: text('user_profile_id').notNull().references(() => user_profile.id)
 });
 
